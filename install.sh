@@ -156,6 +156,8 @@ fileapache_source
 
 fileapache_php
 
+site_create
+
 php_create
 
 endof_script
