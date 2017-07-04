@@ -162,12 +162,18 @@ function site_create()
       echo "création du site par défaut en cours..."
       php_create_base
       endof_script
+      cd /home/$USER
+      cd 
+      echo "retour au dossier initial effectué"
 
-      [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1 # handle exits from shell or function but don't exit interactive shell
+      #[[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1 # handle exits from shell or function but don't exit interactive shell
   else 
       echo "création du site en cours ..."
       php_create
       endof_script
+      cd /home/$USER
+      cd 
+      echo "retour au dossier initial effectué"
 
   fi
 }
@@ -189,10 +195,5 @@ fileapache_source
 fileapache_php
 
 site_create
-
-endof_script
-
-cd /home/$USER
-cd 
 
 #/* Fin du script */#
