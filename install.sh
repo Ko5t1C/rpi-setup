@@ -171,6 +171,11 @@ function site_create()
       echo "création du site en cours ..."
       TEST=""
       while [ -z "$TEST" ] ; do
+          if [ "$DISABLEUSERMOD" = "1" ] ; then
+        TEST="Yes"
+          else
+        TEST="No"
+          fi
           echo ""
           echo "Do you want to disable /sethost, /setident, /chgname,"
           echo "/chghost, and /chgident?"
