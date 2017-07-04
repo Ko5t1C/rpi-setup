@@ -110,8 +110,13 @@ function fileapache_php()
 
 function site_create()
 {
+  while true
+  do
   echo -n Quel est le titre du site ?: 
   read -s title
+  sleep 2 
+  done
+  
 }
 
 function php_create()  
@@ -135,6 +140,7 @@ echo "</html>" >> $chemin/index.php
 
 function endof_script()
 {
+  cd
   echo "url de la page web => http://$ip" 
   echo "url de phpmyadmin => http://$ip/phpmyadmin" 
   echo "url de debug => http://$ip/debug.php"
