@@ -110,7 +110,6 @@ function fileapache_php()
 
 function endof_script()
 {
-  cd /home/$USER
   echo "url de la page web => http://$ip" 
   echo "url de phpmyadmin => http://$ip/phpmyadmin" 
   echo "url de debug => http://$ip/debug.php"
@@ -133,8 +132,6 @@ echo "<html lang=\"en\">" >> $chemin/index.php
   echo "<h1>Serveur en route</h1>" >> $chemin/index.php
   echo "</body>" >> $chemin/index.php
 echo "</html>" >> $chemin/index.php
-cd /home/$USER
-endof_script
 }
 
 function php_create()  
@@ -154,8 +151,6 @@ echo "<html lang=\"en\">" >> $chemin/index.php
   echo "<h1>Serveur en route</h1>" >> $chemin/index.php
   echo "</body>" >> $chemin/index.php
 echo "</html>" >> $chemin/index.php
-cd /home/$USER
-endof_script
 }
 
 function site_create()
@@ -171,14 +166,6 @@ function site_create()
       echo "création du site en cours ..."
       php_create
   fi
-
-#  while true
-#  do
- # echo -n Quel est le titre du site ?: 
- # read -s title
- # sleep 2 
- # done
-  
 }
 
 #/* Fin des fonctions */#
@@ -198,5 +185,10 @@ fileapache_source
 fileapache_php
 
 site_create
+
+endof_script
+
+cd /home/$USER
+cd 
 
 #/* Fin du script */#
