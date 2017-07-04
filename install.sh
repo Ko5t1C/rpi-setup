@@ -110,6 +110,7 @@ function fileapache_php()
 
 function endof_script()
 {
+  cd /home/$USER
   echo "url de la page web => http://$ip" 
   echo "url de phpmyadmin => http://$ip/phpmyadmin" 
   echo "url de debug => http://$ip/debug.php"
