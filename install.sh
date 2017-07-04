@@ -161,10 +161,14 @@ function site_create()
   then
       echo "création du site par défaut en cours..."
       php_create_base
+      endof_script
+
       [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1 # handle exits from shell or function but don't exit interactive shell
   else 
       echo "création du site en cours ..."
       php_create
+      endof_script
+
   fi
 }
 
