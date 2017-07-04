@@ -1,2 +1,5 @@
 # rpi-setup
-installation paquets pour rpi3 serveur web &amp; git 
+installation d'un serveur web (paquets lamp & git) pour rpi3
+
+#En terminal tapez:
+wget https://github.com/Ko5t1C/rpi-setup/archive/master.zip ; unzip master.zip ; cd rpi-setup-master ; ./install.sh
