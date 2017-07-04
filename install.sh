@@ -148,6 +148,7 @@ echo "<html lang=\"en\">" >> $chemin/index.php
   echo "<h1>Serveur en route</h1>" >> $chemin/index.php
   echo "</body>" >> $chemin/index.php
 echo "</html>" >> $chemin/index.php
+cd /home/$USER
 }
 
 function php_create()  
@@ -167,11 +168,11 @@ echo "<html lang=\"en\">" >> $chemin/index.php
   echo "<h1>Serveur en route</h1>" >> $chemin/index.php
   echo "</body>" >> $chemin/index.php
 echo "</html>" >> $chemin/index.php
+cd /home/$USER
 }
 
 function endof_script()
 {
-  cd /home/$USER
   echo "url de la page web => http://$ip" 
   echo "url de phpmyadmin => http://$ip/phpmyadmin" 
   echo "url de debug => http://$ip/debug.php"
