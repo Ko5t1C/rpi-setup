@@ -110,13 +110,42 @@ function fileapache_php()
 
 function site_create()
 {
-  while true
-  do
-  echo -n Quel est le titre du site ?: 
-  read -s title
-  sleep 2 
-  done
+  read -p "Voulez vous lancer la création de site? " -n 1 -r
+  echo    # (optional) move to a new line
+  if [[ ! $REPLY =~ ^[Oo]$ ]]
+  then
+      echo "création du site en cours"
+      [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1 # handle exits from shell or function but don't exit interactive shell
+  else 
+      echo "création du site par défaut"
+  fi
+
+#  while true
+#  do
+ # echo -n Quel est le titre du site ?: 
+ # read -s title
+ # sleep 2 
+ # done
   
+}
+
+function php_create_base()  
+{
+#création du fichier php index
+touch $chemin/index.php
+echo "<!DOCTYPE html>" >> $chemin/index.php
+echo "<html lang=\"en\">" >> $chemin/index.php
+  echo "<head>" >> $chemin/index.php
+    echo "<meta charset=\"utf-8\">" >> $chemin/index.php
+    echo "<title>Rpi Serveur web</title>" >> $chemin/index.php
+    echo "<link rel=\"stylesheet\" href=\"style.css\">" >> $chemin/index.php
+    echo "<script src=\"script.js\"></script>" >> $chemin/index.php
+  echo "</head>" >> $chemin/index.php
+  echo "<body>" >> $chemin/index.php
+    echo "<!-- page content -->" >> $chemin/index.php
+  echo "<h1>Serveur en route</h1>" >> $chemin/index.php
+  echo "</body>" >> $chemin/index.php
+echo "</html>" >> $chemin/index.php
 }
 
 function php_create()  
