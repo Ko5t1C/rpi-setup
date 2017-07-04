@@ -155,7 +155,7 @@ echo "</html>" >> $chemin/index.php
 
 function site_create()
 {
-  read -p "Voulez vous lancer la création de site? " -n 1 -r
+  read -p "La création de la page web est en cours, Souhaitez-vous continuer ? [O/n]" -n 1 -r
   echo    # (optional) move to a new line
   if [[ ! $REPLY =~ ^[Yy]$ ]]
   then
@@ -169,6 +169,30 @@ function site_create()
       #[[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1 # handle exits from shell or function but don't exit interactive shell
   else 
       echo "création du site en cours ..."
+      TEST=""
+      while [ -z "$TEST" ] ; do
+          echo ""
+          echo "Do you want to disable /sethost, /setident, /chgname,"
+          echo "/chghost, and /chgident?"
+          echo $n "[$TEST] -> $c"
+        read cc
+          if [ -z "$cc" ] ; then
+        cc=$TEST
+          fi
+          case "$cc" in
+        [Yy]*)
+            DISABLEUSERMOD="1"
+            ;;
+        [Nn]*)
+            DISABLEUSERMOD=""
+            ;;
+        *)
+            echo ""
+            echo "You must enter either Yes or No"
+            TEST=""
+            ;;
+          esac
+      done
       php_create
       endof_script
       cd /home/$USER
