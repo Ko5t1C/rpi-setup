@@ -112,12 +112,14 @@ function site_create()
 {
   read -p "Voulez vous lancer la création de site? " -n 1 -r
   echo    # (optional) move to a new line
-  if [[ ! $REPLY =~ ^[Oo]$ ]]
+  if [[ ! $REPLY =~ ^[Yy]$ ]]
   then
       echo "création du site en cours"
+      php_create
       [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1 # handle exits from shell or function but don't exit interactive shell
   else 
       echo "création du site par défaut"
+      php_create_base
   fi
 
 #  while true
@@ -169,7 +171,7 @@ echo "</html>" >> $chemin/index.php
 
 function endof_script()
 {
-  cd
+  cd /home/$USER
   echo "url de la page web => http://$ip" 
   echo "url de phpmyadmin => http://$ip/phpmyadmin" 
   echo "url de debug => http://$ip/debug.php"
@@ -192,8 +194,6 @@ fileapache_source
 fileapache_php
 
 site_create
-
-php_create
 
 endof_script
 
