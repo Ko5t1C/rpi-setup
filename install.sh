@@ -108,6 +108,12 @@ function fileapache_php()
   fi  
 }
 
+function site_create()
+{
+  echo -n Quel est le titre du site ?: 
+  read -s title
+}
+
 function php_create()  
 {
 #création du fichier php index
@@ -116,7 +122,7 @@ echo "<!DOCTYPE html>" >> $chemin/index.php
 echo "<html lang=\"en\">" >> $chemin/index.php
   echo "<head>" >> $chemin/index.php
     echo "<meta charset=\"utf-8\">" >> $chemin/index.php
-    echo "<title>Raspberry pi Serveur Web</title>" >> $chemin/index.php
+    echo "<title>$title</title>" >> $chemin/index.php
     echo "<link rel=\"stylesheet\" href=\"style.css\">" >> $chemin/index.php
     echo "<script src=\"script.js\"></script>" >> $chemin/index.php
   echo "</head>" >> $chemin/index.php
@@ -125,8 +131,13 @@ echo "<html lang=\"en\">" >> $chemin/index.php
   echo "<h1>Serveur en route</h1>" >> $chemin/index.php
   echo "</body>" >> $chemin/index.php
 echo "</html>" >> $chemin/index.php
-echo "url de la page web => http://$ip" 
-echo "url de phpmyadmin => http://$ip/phpmyadmin" 
+}
+
+function endof_script()
+{
+  echo "url de la page web => http://$ip" 
+  echo "url de phpmyadmin => http://$ip/phpmyadmin" 
+  echo "url de debug => http://$ip/debug.php"
 }
 
 #/* Fin des fonctions */#
@@ -146,5 +157,7 @@ fileapache_source
 fileapache_php
 
 php_create
+
+endof_script
 
 #/* Fin du script */#
