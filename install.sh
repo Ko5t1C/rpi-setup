@@ -108,27 +108,11 @@ function fileapache_php()
   fi  
 }
 
-function site_create()
+function endof_script()
 {
-  read -p "Voulez vous lancer la création de site? " -n 1 -r
-  echo    # (optional) move to a new line
-  if [[ ! $REPLY =~ ^[Yy]$ ]]
-  then
-      echo "création du site en cours"
-      php_create
-      [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1 # handle exits from shell or function but don't exit interactive shell
-  else 
-      echo "création du site par défaut"
-      php_create_base
-  fi
-
-#  while true
-#  do
- # echo -n Quel est le titre du site ?: 
- # read -s title
- # sleep 2 
- # done
-  
+  echo "url de la page web => http://$ip" 
+  echo "url de phpmyadmin => http://$ip/phpmyadmin" 
+  echo "url de debug => http://$ip/debug.php"
 }
 
 function php_create_base()  
@@ -149,6 +133,7 @@ echo "<html lang=\"en\">" >> $chemin/index.php
   echo "</body>" >> $chemin/index.php
 echo "</html>" >> $chemin/index.php
 cd /home/$USER
+endof_script
 }
 
 function php_create()  
@@ -169,13 +154,30 @@ echo "<html lang=\"en\">" >> $chemin/index.php
   echo "</body>" >> $chemin/index.php
 echo "</html>" >> $chemin/index.php
 cd /home/$USER
+endof_script
 }
 
-function endof_script()
+function site_create()
 {
-  echo "url de la page web => http://$ip" 
-  echo "url de phpmyadmin => http://$ip/phpmyadmin" 
-  echo "url de debug => http://$ip/debug.php"
+  read -p "Voulez vous lancer la création de site? " -n 1 -r
+  echo    # (optional) move to a new line
+  if [[ ! $REPLY =~ ^[Yy]$ ]]
+  then
+      echo "création du site par défaut en cours..."
+      php_create_base
+      [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1 # handle exits from shell or function but don't exit interactive shell
+  else 
+      echo "création du site en cours ..."
+      php_create
+  fi
+
+#  while true
+#  do
+ # echo -n Quel est le titre du site ?: 
+ # read -s title
+ # sleep 2 
+ # done
+  
 }
 
 #/* Fin des fonctions */#
@@ -195,7 +197,5 @@ fileapache_source
 fileapache_php
 
 site_create
-
-endof_script
 
 #/* Fin du script */#
