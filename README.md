@@ -1,5 +1,7 @@
 # rpi-setup
-installation d'un serveur web (paquets lamp & git) pour rpi3
+installation d'un serveur web (paquets lamp & git) pour rpi3 & ubuntu based os
+ce script va installer apache2 php mysql phpmyadmin et git ainsi qu'une automatisation pour la création d'une page web (en cours)
+
 
 # En terminal tapez:
 wget https://github.com/Ko5t1C/rpi-setup/archive/master.zip ; unzip master.zip ; cd rpi-setup-master ; ./install.sh
